@@ -1,0 +1,11 @@
+.not-page {
+  margin: 0 auto;
+  max-width: 1280px;
+  height: max-content;
+  padding: 300px;
+  text-align: center;
+  .page-title {
+    color: red;
+    font-size: 35px;
+  }
+}

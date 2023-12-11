@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@700&display=swap");
+
+.bunner {
+  min-width: 320px;
+  height: 500px;
+  background-image: url(./icons/background-two.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  h1 {
+    font-family: "Oswald", sans-serif;
+    margin: 0 auto;
+    padding: 50px 250px;
+    font-weight: 700;
+    font-size: 150px;
+    color: #db81c5;
+  }
+}

@@ -1,0 +1,14 @@
+.basket {
+  // margin: 0 250px;
+  // max-width: 50%;
+  display: flex;
+  justify-content: space-around;
+  &__list {
+    list-style: none;
+  }
+  h2 {
+    color: #19a672;
+    text-align: center;
+    font-size: 30px;
+  }
+}
