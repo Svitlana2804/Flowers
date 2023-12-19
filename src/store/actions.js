@@ -9,6 +9,7 @@ export const actionModal = createAction("ACTION_ISMODAL");
 export const actionFavorite = createAction("ACTION_FAVORITE");
 export const actionclearCart = createAction("CLEAR_CART");
 export const actionRemoveCartProduct = createAction("ACTION_REMOVE_PRODUCT");
+export const actionQuantity = createAction("ACTION_QUANTITY");
 
 export const actionFetchProduct = () => (dispatch) => {
   return sendRequest("data.json").then((data) => {

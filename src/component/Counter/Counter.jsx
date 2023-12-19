@@ -22,8 +22,8 @@ const CounterButton = ({ onIncrease, onDecrease, count }) => {
   return (
     <div>
       <p>Кількість: {count}</p>
-      <button onClick={onIncrease}>Збільшити кількість</button>
-      <button onClick={onDecrease}>Зменшити кількість</button>
+      <button onClick={onIncrease}>Збільшити </button>
+      <button onClick={onDecrease}>Зменшити </button>
     </div>
   );
 };

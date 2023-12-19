@@ -66,4 +66,16 @@ export default createReducer(initialState, {
     state.shop = [];
     localStorage.removeItem("shopData");
   },
+  [actions.actionQuantity]: (state, { payload }) => {
+    state.shop = state.shop.map((item) => {
+      if (item.artc === payload.artc) {
+        if (payload.operator === "+") {
+          item.quantity += 1;
+        } else {
+          item.quantity = item.quantity - 1;
+        }
+      }
+      return item;
+    });
+  },
 });
