@@ -5,7 +5,7 @@ import {actionUpdate} from "../../store/actions.js";
 import InputBox from "../../component/Form/Input/Input.jsx";
 import Button from "../../component/Button/Button.jsx";
 import {validationSchema} from "./validation.js"
-import { PatternFormat } from 'react-number-format';
+// import { PatternFormat } from 'react-number-format';
 import { FcCloseUpMode } from "react-icons/fc";
 import { actionclearCart } from "../../store/actions.js";
 import { ToastContainer, toast } from 'react-toastify';
@@ -26,29 +26,19 @@ theme: "light",
 	const formData = useSelector(selectorFromData)
 	const basket= useSelector(selectorShop)
     const dispatch = useDispatch()
-    // console.log('values==========>>>>>>>>',formData)
-	// console.log("PatternFormat", PatternFormat)
-	
-
+ 
     return (
 		<div className="page__dashboard">
             <div className="page">
 				<Formik initialValues={formData || {}}
 					validationSchema={validationSchema}
 					onSubmit={(values,{resetForm}) => {
-						// console.log('values==========>>>>>>>>', values);
 						dispatch(actionUpdate(values)) 
 						console.log('Придбані товари ==>',basket)
 						dispatch(actionclearCart())
 					resetForm({})
-					// 	console.log("resetForm===",resetForm)
-						// alert("Замовлення прийняте,очікуйте на дзвінок")
 						notify()
-	// 					formikBag.resetForm();
-    // formikBag.setSubmitting(false);
-						
-			
-                }}> 
+						}}> 
                     {({handleSubmit, errors, touched}) => (
                         <Form onSubmit={handleSubmit}>
                         	<fieldset className="form-block">

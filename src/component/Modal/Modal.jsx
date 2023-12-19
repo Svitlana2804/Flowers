@@ -1,6 +1,6 @@
 import cx from "classnames"
 import PropTypes from 'prop-types'
-
+import React from "react";
 const Modal = ({children, className})=>{
     const isActive = true || true && false && (true ||false)
     return(

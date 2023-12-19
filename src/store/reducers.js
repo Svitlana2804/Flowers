@@ -5,7 +5,7 @@ const shopDataFromLocalStorage = localStorage.getItem("shopData");
 
 const inizializationShop = JSON.parse(shopDataFromLocalStorage) || [];
 
-const initialState = {
+export const initialState = {
   flowersShopArr: {},
   favorites: [],
   shop: inizializationShop,
@@ -45,19 +45,6 @@ export default createReducer(initialState, {
   [actions.actionAddToShop]: (state, { payload }) => {
     state.shop = [...state.shop, payload];
     localStorage.setItem("shopData", JSON.stringify(state.shop));
-    // state.shop = state.shop.map((item, index) => {
-    //   return {
-    //     ...item,
-    //     index: index,
-    //   };
-    // });
-
-    // // // Додайте новий об'єкт до масиву з індексом
-    // payload.index = state.shop.length;
-    // state.shop.push(payload);
-
-    // console.log("state.shop", state.shop);
-    // localStorage.setItem("shopData", JSON.stringify(state.shop, payload));
   },
   [actions.actionRemoveCartProduct]: (state, { payload }) => {
     // const { index } = payload;
@@ -68,17 +55,6 @@ export default createReducer(initialState, {
       localStorage.setItem("shopData", JSON.stringify(state.shop));
     }
   },
-  // state.shop = payload;
-  //   console.log("state.shop", state.shop);
-
-  // [actions.actionRemoveProduct]: (state, { payload }) => {
-  //   if (payload && payload.artc) {
-  //     state.shop = state.shop.filter(
-  //       (item) => !(item && item.artc === payload.artc)
-  //     );
-  //     localStorage.setItem("shopData", JSON.stringify(state.shop));
-  //   }
-  // },
   [actions.actionModal]: (state, { payload }) => {
     state.isModal = payload;
   },

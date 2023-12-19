@@ -1,6 +1,5 @@
+import React from "react"
 import "./Bunner.scss"
-import FlowerShop from "../FlowerShop/FlowerShop"
-
 
 function Bunner() {
     return (
