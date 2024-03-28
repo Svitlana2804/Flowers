@@ -72,7 +72,7 @@ export default createReducer(initialState, {
         if (payload.operator === "+") {
           item.quantity += 1;
         } else {
-          item.quantity = item.quantity - 1;
+          item.quantity = Math.max(item.quantity - 1, 0);
         }
       }
       return item;

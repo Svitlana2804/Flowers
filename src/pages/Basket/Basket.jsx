@@ -3,10 +3,10 @@ import './Basket.scss'
 import  { MdRemoveShoppingCart } from "react-icons/md"
 import Button from '../../component/Button/Button';
 import { useDispatch, useSelector } from 'react-redux';
-import { actionQuantity, actionRemoveProduct } from '../../store/actions';
+import { actionRemoveProduct } from '../../store/actions';
 import PageForm from '../PageForm/PageForm'; 
 import { selectorShop } from '../../store/selectors';
-import CounterButton from '../../component/Counter/Counter';
+import CardCounter from "../../component/Counter/Counter"
 
 const BasketPage = () => {
   const dispatch = useDispatch()
@@ -21,18 +21,18 @@ const BasketPage = () => {
     dispatch(actionRemoveProduct(indexItem))
   }
   
-  const handleIncrease = (artc) => {
-    dispatch(actionQuantity({artc,operator:"+"}))
-    setCount(count + 1);
-  };
+  // const handleIncrease = (artc) => {
+  //   dispatch(actionQuantity({artc,operator:"+"}))
+  //   setCount(count + 1);
+  // };
 
-  const handleDecrease = (artc) => {
-    dispatch(actionQuantity({artc,operator:"-"}))
-    setCount(count - 1);
-  }
+  // const handleDecrease = (artc) => {
+  //   dispatch(actionQuantity({artc,operator:"-"}))
+  //   setCount(count - 1);
+  // }
 
 //  const totalCost = basket.reduce((total, item) => total + parseFloat(item.cost)*count, 0);
- 
+  
   const totalCost = basket.reduce(
     (total, item) => total + parseFloat(item.cost) * item.quantity,
     0
@@ -47,7 +47,7 @@ const BasketPage = () => {
               {basket.map((item, index) => (
               <li key={index}>
                <img src={item.imgIcon} style={{ width:'140px', height:'130px',borderRadius:'50px'}} /> {item.title} {item.cost}{`грн`}
-                  <CounterButton count={count}
+                  <CardCounter count={item.quantity}
                     onIncrease={() => { handleIncrease(item.artc) }}
                     onDecrease={() => { handleDecrease(item.artc) }} />
                   <Button onClick={() => deleteProduct(index)}

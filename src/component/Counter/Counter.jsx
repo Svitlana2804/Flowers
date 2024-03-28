@@ -1,30 +1,39 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
+import { useDispatch,useSelector} from 'react-redux';
+import { actionQuantity } from '../../store/actions';
+import { selectorShop } from '../../store/selectors';
 
-// const CounterButton = () => {
-//   const [count, setCount] = useState(0);
+const CardCounter = () => {
+  const dispatch = useDispatch()
+   const basket = useSelector(selectorShop)
+   
+  const [count, setCount] = useState(0);
 
-//   const handleButtonClick = () => {
-//     setCount(count + 1);
-//     };
-//     const handleButtonClickTwo = () => {
-//         setCount(count - 1);
-//     }
-//     return (
-//     <div>
-//       <p>Кількість: {count}</p>
-//             <button onClick={handleButtonClick}>Збільшити кількість</button>
-//              <button onClick={handleButtonClickTwo}>Зменшити кількість</button>
-//     </div>
-//   );
-// };
+   const handleIncrease = (artc) => {
+    dispatch(actionQuantity({artc,operator:"+"}))
+    setCount(count + 1);
+  };
 
-const CounterButton = ({ onIncrease, onDecrease, count }) => {
+  const handleDecrease = (artc) => {
+    dispatch(actionQuantity({artc,operator:"-"}))
+    setCount(Math.max(count - 1, 0));
+    
+  }
   return (
     <div>
-      <p>Кількість: {count}</p>
-      <button onClick={onIncrease}>Збільшити </button>
-      <button onClick={onDecrease}>Зменшити </button>
+      <CounterButton onIncrease={handleIncrease} onDecrease={handleDecrease} count={count} />
     </div>
   );
 };
-export default CounterButton
+
+  const CounterButton = ({ onIncrease, onDecrease, count }) => {
+    return (
+      <div>
+        <p>Кількість: {count}</p>
+        <button onClick={onIncrease}>Збільшити </button>
+        <button onClick={onDecrease}>Зменшити </button>
+      </div>
+    );
+  };
+
+export default CardCounter
